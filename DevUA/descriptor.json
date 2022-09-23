@@ -1,0 +1,18 @@
+﻿{
+  "Descriptor": {
+    "UId": "02ca3b3d-9b51-5799-219d-bf6c9260c2c7",
+    "PackageVersion": "8.0.2",
+    "Name": "DevUA",
+    "Type": 1,
+    "ModifiedOnUtc": "\/Date(1663839145000)\/",
+    "Maintainer": "Customer",
+    "ProjectPath": "Files/DevUA.csproj",
+    "DependsOn": [
+      {
+        "UId": "d7559847-f38e-410c-baee-6f43bbe80d42",
+        "PackageVersion": "7.8.0",
+        "Name": "SalesEnterpriseSoftkey_ENU"
+      }
+    ]
+  }
+}
