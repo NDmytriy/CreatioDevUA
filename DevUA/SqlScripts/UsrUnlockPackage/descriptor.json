@@ -1,0 +1,10 @@
+﻿{
+  "SqlScript": {
+    "UId": "f5e6b727-86f5-c870-d432-f820f57d0cb7",
+    "Name": "UsrUnlockPackage",
+    "DBEngineType": 0,
+    "InstallType": 1,
+    "ModifiedOnUtc": "\/Date(1663944122000)\/",
+    "DependsOn": []
+  }
+}
