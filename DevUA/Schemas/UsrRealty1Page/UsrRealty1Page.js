@@ -13,8 +13,47 @@ define("UsrRealty1Page", [], function() {
 				}
 			}
 		}/**SCHEMA_DETAILS*/,
-		businessRules: /**SCHEMA_BUSINESS_RULES*/{}/**SCHEMA_BUSINESS_RULES*/,
-		methods: {},
+		businessRules: /**SCHEMA_BUSINESS_RULES*/{
+			"UsrComment": {
+				"93fe52b2-d2af-4491-8095-a7236dc565f6": {
+					"uId": "93fe52b2-d2af-4491-8095-a7236dc565f6",
+					"enabled": true,
+					"removed": false,
+					"ruleType": 0,
+					"property": 2,
+					"logical": 0,
+					"conditions": [
+						{
+							"comparisonType": 7,
+							"leftExpression": {
+								"type": 1,
+								"attribute": "UsrPriceUSD"
+							},
+							"rightExpression": {
+								"type": 0,
+								"value": 1000,
+								"dataValueType": 5
+							}
+						}
+					]
+				}
+			}
+		}/**SCHEMA_BUSINESS_RULES*/,
+		methods: {
+			getMyButtonEnabled: function() {
+				var result = true;
+				var name = this.get("UsrName");
+				
+				if (!name) {
+					result = false;
+				}
+				return result; 
+			},
+		onMyButtonClick: function() {
+				//this.console.log("Кнопка ПЫЩЬ нажата!");
+				this.showInformationDialog("Кнопка ПЫЩЬ действительно нажата!");
+			},		
+		},
 		dataModels: /**SCHEMA_DATA_MODELS*/{}/**SCHEMA_DATA_MODELS*/,
 		diff: /**SCHEMA_DIFF*/[
 			{
@@ -70,6 +109,33 @@ define("UsrRealty1Page", [], function() {
 				"parentName": "ProfileContainer",
 				"propertyName": "items",
 				"index": 2
+			},
+			{
+				"operation": "insert",
+				"name": "MyButton",
+				"values": {
+					"itemType": 5,
+					"caption": {
+						"bindTo": "Resources.Strings.MyButtonCaption"
+					},
+					"click": {
+						"bindTo": "onMyButtonClick"
+					},
+					"enabled": {
+						"bindTo": "getMyButtonEnabled"
+					},
+					"layout": {
+						"colSpan": 24,
+						"rowSpan": 1,
+						"column": 0,
+						"row": 3,
+						"layoutName": "ProfileContainer"
+					},
+					"style": "green"
+				},
+				"parentName": "ProfileContainer",
+				"propertyName": "items",
+				"index": 3
 			},
 			{
 				"operation": "insert",
