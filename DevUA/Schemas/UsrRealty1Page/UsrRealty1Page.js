@@ -1,7 +1,11 @@
-define("UsrRealty1Page", [], function() {
+define("UsrRealty1Page", ["RightUtilities"], function(RightUtilities) {
 	return {
 		entitySchemaName: "UsrRealty",
-		attributes: {},
+		attributes: {
+			"CanChangePriceAttr": {
+				dataValueType: this.Terrasoft.DataValueType.BOOLEAN,
+				value: false
+			}},
 		modules: /**SCHEMA_MODULES*/{}/**SCHEMA_MODULES*/,
 		details: /**SCHEMA_DETAILS*/{
 			"Files": {
@@ -39,7 +43,22 @@ define("UsrRealty1Page", [], function() {
 				}
 			}
 		}/**SCHEMA_BUSINESS_RULES*/,
-		methods: {
+		methods: {			
+			onEntityInitialized: function() {
+				this.callParent(arguments);
+				this.setSecurityAttribute();
+			},
+			
+			setSecurityAttribute: function() {
+				RightUtilities.checkCanExecuteOperation({
+					operation: "CanChangePrice"
+				}, this.getPriceOperationResult, this);
+			},
+			
+			getPriceOperationResult: function(result) {
+				this.set("CanChangePriceAttr", result);
+			},
+			
 			getMyButtonEnabled: function() {
 				var result = true;
 				var name = this.get("UsrName");
