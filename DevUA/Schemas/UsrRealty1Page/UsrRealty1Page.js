@@ -16,6 +16,14 @@ define("UsrRealty1Page", ["RightUtilities"], function(RightUtilities) {
 					"masterColumn": "Id",
 					"detailColumn": "UsrRealty"
 				}
+			},
+			"UsrSchemac97d7146Detailec5f6b36": {
+				"schemaName": "UsrSchemac97d7146Detail",
+				"entitySchemaName": "UsrRealtyVisit",
+				"filter": {
+					"detailColumn": "UsrParentRealty",
+					"masterColumn": "Id"
+				}
 			}
 		}/**SCHEMA_DETAILS*/,
 		businessRules: /**SCHEMA_BUSINESS_RULES*/{
@@ -240,10 +248,10 @@ define("UsrRealty1Page", ["RightUtilities"], function(RightUtilities) {
 			},
 			{
 				"operation": "insert",
-				"name": "NotesAndFilesTab",
+				"name": "Tab818cc95cTabLabel",
 				"values": {
 					"caption": {
-						"bindTo": "Resources.Strings.NotesAndFilesTabCaption"
+						"bindTo": "Resources.Strings.Tab818cc95cTabLabelTabCaption"
 					},
 					"items": [],
 					"order": 0
@@ -251,6 +259,31 @@ define("UsrRealty1Page", ["RightUtilities"], function(RightUtilities) {
 				"parentName": "Tabs",
 				"propertyName": "tabs",
 				"index": 0
+			},
+			{
+				"operation": "insert",
+				"name": "UsrSchemac97d7146Detailec5f6b36",
+				"values": {
+					"itemType": 2,
+					"markerValue": "added-detail"
+				},
+				"parentName": "Tab818cc95cTabLabel",
+				"propertyName": "items",
+				"index": 0
+			},
+			{
+				"operation": "insert",
+				"name": "NotesAndFilesTab",
+				"values": {
+					"caption": {
+						"bindTo": "Resources.Strings.NotesAndFilesTabCaption"
+					},
+					"items": [],
+					"order": 1
+				},
+				"parentName": "Tabs",
+				"propertyName": "tabs",
+				"index": 1
 			},
 			{
 				"operation": "insert",
@@ -308,7 +341,7 @@ define("UsrRealty1Page", ["RightUtilities"], function(RightUtilities) {
 				"operation": "merge",
 				"name": "ESNTab",
 				"values": {
-					"order": 1
+					"order": 2
 				}
 			}
 		]/**SCHEMA_DIFF*/

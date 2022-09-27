@@ -1,0 +1,13 @@
+﻿{
+  "Descriptor": {
+    "UId": "0d282625-3cc1-44dd-b4d7-4e4e51f5000f",
+    "Name": "UsrSchema5317e724Page",
+    "ModifiedOnUtc": "\/Date(1664292491000)\/",
+    "Parent": {
+      "UId": "d3cc497c-f286-4f13-99c1-751c468733c0",
+      "Name": "BasePageV2"
+    },
+    "ManagerName": "ClientUnitSchemaManager",
+    "Caption": "Просмотр недвижимости"
+  }
+}
