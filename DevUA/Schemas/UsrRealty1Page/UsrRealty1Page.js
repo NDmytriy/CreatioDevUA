@@ -5,7 +5,8 @@ define("UsrRealty1Page", ["RightUtilities"], function(RightUtilities) {
 			"CanChangePriceAttr": {
 				dataValueType: this.Terrasoft.DataValueType.BOOLEAN,
 				value: false
-			}},
+			}
+		},
 		modules: /**SCHEMA_MODULES*/{}/**SCHEMA_MODULES*/,
 		details: /**SCHEMA_DETAILS*/{
 			"Files": {
@@ -37,6 +38,30 @@ define("UsrRealty1Page", ["RightUtilities"], function(RightUtilities) {
 								"type": 0,
 								"value": 1000,
 								"dataValueType": 5
+							}
+						}
+					]
+				}
+			},
+			"UsrPriceUSD": {
+				"b75f0fc7-9e86-4588-8967-d81a8c8ea385": {
+					"uId": "b75f0fc7-9e86-4588-8967-d81a8c8ea385",
+					"enabled": true,
+					"removed": false,
+					"ruleType": 0,
+					"property": 1,
+					"logical": 0,
+					"conditions": [
+						{
+							"comparisonType": 3,
+							"leftExpression": {
+								"type": 1,
+								"attribute": "CanChangePriceAttr"
+							},
+							"rightExpression": {
+								"type": 0,
+								"value": true,
+								"dataValueType": 12
 							}
 						}
 					]
