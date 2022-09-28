@@ -1,12 +1,34 @@
 define("UsrRealty1Page", ["RightUtilities"], function(RightUtilities) {
 	return {
-		entitySchemaName: "UsrRealty",
+		entitySchemaName: "UsrRealty",		
+		
 		attributes: {
 			"CanChangePriceAttr": {
 				dataValueType: this.Terrasoft.DataValueType.BOOLEAN,
 				value: false
+			},
+			
+			"CommissionUSD": {
+				type: Terrasoft.ViewModelColumnType.VIRTUAL_COLUMN,
+				dataValueType: Terrasoft.DataValueType.FLOAT,
+				value: 0,
+				dependencies: [
+                    {
+         /* Значение колонки [CommissionUSD] зависит от значений колонок [UsrPriceUSD] и [UsrOfferType]. */
+                columns: ["UsrPriceUSD", "UsrOfferType"],
+        /* Метод-обработчик, который вызывается при изменении значения одной из колонок [UsrPriceUSD] и [UsrOfferType]. */
+                 methodName: "calculateCommission"
+                    }
+                ]
+			},
+			
+			"UsrOfferType": {
+				lookupListConfig: {
+					columns: ["UsrCommissionCoeff"]
+				}
 			}
 		},
+		
 		modules: /**SCHEMA_MODULES*/{}/**SCHEMA_MODULES*/,
 		details: /**SCHEMA_DETAILS*/{
 			"Files": {
@@ -76,10 +98,25 @@ define("UsrRealty1Page", ["RightUtilities"], function(RightUtilities) {
 				}
 			}
 		}/**SCHEMA_BUSINESS_RULES*/,
-		methods: {			
+		methods: {		
+			calculateCommission: function() {
+				var price = this.get("UsrPriceUSD");
+				if (!price) {
+					price = 0;
+				}
+				var offerTypeObject = this.get("UsrOfferType");
+				var coeff = 0;
+				if (offerTypeObject) {
+					coeff = offerTypeObject.UsrCommissionCoeff;
+				}
+				var result = coeff * price;
+				this.set("CommissionUSD", result);				
+			},
+			
 			onEntityInitialized: function() {
 				this.callParent(arguments);
 				this.setSecurityAttribute();
+				this.calculateCommission();
 			},
 			
 			setSecurityAttribute: function() {
@@ -162,6 +199,27 @@ define("UsrRealty1Page", ["RightUtilities"], function(RightUtilities) {
 				"propertyName": "items",
 				"index": 2
 			},
+				{
+				"operation": "insert",
+				"name": "CommissionControl",
+				"values": {
+					"layout": {
+						"colSpan": 24,
+						"rowSpan": 1,
+						"column": 0,
+						"row": 3,
+						"layoutName": "ProfileContainer"
+					},
+					"bindTo": "CommissionUSD",
+					"enabled": false,
+					"caption": {
+						"bindTo": "Resources.Strings.CommissionCaption"
+					},
+				},
+				"parentName": "ProfileContainer",
+				"propertyName": "items",
+				"index": 3
+			},
 			{
 				"operation": "insert",
 				"name": "MyButton",
@@ -180,14 +238,14 @@ define("UsrRealty1Page", ["RightUtilities"], function(RightUtilities) {
 						"colSpan": 24,
 						"rowSpan": 1,
 						"column": 0,
-						"row": 3,
+						"row": 4,
 						"layoutName": "ProfileContainer"
 					},
 					"style": "green"
 				},
 				"parentName": "ProfileContainer",
 				"propertyName": "items",
-				"index": 3
+				"index": 4
 			},
 			{
 				"operation": "insert",

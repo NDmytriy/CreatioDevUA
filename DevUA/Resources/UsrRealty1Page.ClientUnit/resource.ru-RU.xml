@@ -3,6 +3,7 @@
 	<Group Type="String">
 		<Items>
 			<Item Name="Caption" Value="Страница редактирования: &quot;Недвижимость&quot;" />
+			<Item Name="LocalizableStrings.CommissionCaption.Value" Value="Комиссия, USD" />
 			<Item Name="LocalizableStrings.MyButtonCaption.Value" Value="ПЫЩЬ!!" />
 			<Item Name="LocalizableStrings.Tab818cc95cTabLabelTabCaption.Value" Value="Просмотры недвижимости" />
 			<Item Name="LocalizableStrings.UsrSchemac97d7146Detailec5f6b36DetailCaptionOnPage.Value" Value="Просмотр недвижимости" />
